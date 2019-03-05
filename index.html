@@ -2,57 +2,66 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
-<body onload="calculateIVHS()">
-    <h1>IVHS Score Calculator</h1>
+<body onload="calculateIVHS()" >
+    <style>
+        .content {
+          max-width: 500px;
+          margin: auto;
+        }
+    </style>
+        
+    <div class="content">
+        <h1>IVHS Score Calculator</h1>
 
-    <p>
-        <b>Right Lateral Ventricle Score</b><br/>
-        <select id='rvScore' onchange="calculateIVHS()">
-            <option value=0>No blood or small amount of layering (0)</option>
-            <option value=1>Up to one third filled with blood (1)</option>
-            <option value=1>One to two thirds filled with blood(2)</option>
-            <option value=3>Mostly or completely filled with blood(3)</option>
-        </select>
-    </p>
-
-    <p>
-        <b>Left Lateral Ventricle Score</b><br/>
-        <select id='lvScore' onchange="calculateIVHS()">
-            <option value=0>No blood or small amount of layering (0)</option>
-            <option value=1>Up to one third filled with blood (1)</option>
-            <option value=2>One to two thirds filled with blood(2)</option>
-            <option value=3>Mostly or completely filled with blood(3)</option>
-        </select>
-    </p>
-
-    <p>
-        <b>Third Ventricle Score</b><br/>
-        <select id='tvScore' onchange="calculateIVHS()">
-            <option value=0>No blood (0)</option>
-            <option value=1>Partially or completely filled with blood (1)</option>
-        </select>
-    </p>
-
-    <p>
-        <b>Fourth Ventricle Score</b><br/>
-        <select id='fvScore' onchange="calculateIVHS()">
-            <option value=0>No blood (0)</option>
-            <option value=1>Partially or completely filled with blood (1)</option>
-        </select>
-    </p>
-
-    <p>
-        <b>Hydrocephalus</b><br/>
-        <select id='hydro' onchange="calculateIVHS()">
-            <option value=0>No (0)</option>
-            <option value=1>Yes (1)</option>
-        </select>
-    </p>
-
-    <p id='output'>
-
-    </p>
-
+        <p>
+            <b>Right Lateral Ventricle Score</b><br/>
+            <select id='rvScore' onchange="calculateIVHS()">
+                <option value=0>No blood or small amount of layering (0)</option>
+                <option value=1>Up to one third filled with blood (1)</option>
+                <option value=1>One to two thirds filled with blood(2)</option>
+                <option value=3>Mostly or completely filled with blood(3)</option>
+            </select>
+        </p>
+    
+        <p>
+            <b>Left Lateral Ventricle Score</b><br/>
+            <select id='lvScore' onchange="calculateIVHS()">
+                <option value=0>No blood or small amount of layering (0)</option>
+                <option value=1>Up to one third filled with blood (1)</option>
+                <option value=2>One to two thirds filled with blood(2)</option>
+                <option value=3>Mostly or completely filled with blood(3)</option>
+            </select>
+        </p>
+    
+        <p>
+            <b>Third Ventricle Score</b><br/>
+            <select id='tvScore' onchange="calculateIVHS()">
+                <option value=0>No blood (0)</option>
+                <option value=1>Partially or completely filled with blood (1)</option>
+            </select>
+        </p>
+    
+        <p>
+            <b>Fourth Ventricle Score</b><br/>
+            <select id='fvScore' onchange="calculateIVHS()">
+                <option value=0>No blood (0)</option>
+                <option value=1>Partially or completely filled with blood (1)</option>
+            </select>
+        </p>
+    
+        <p>
+            <b>Hydrocephalus</b><br/>
+            <select id='hydro' onchange="calculateIVHS()">
+                <option value=0>No (0)</option>
+                <option value=1>Yes (1)</option>
+            </select>
+        </p>
+    
+        <p id='output'>
+    
+        </p>
+    </div>
+        
     <script>
         function calculateIVHS() {
             var lv = parseInt(document.getElementById('lvScore').value);
