@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body onload="calculateIVHS()">
+    <h1>IVHS Score Calculator</h1>
+
+    <p>
+        <b>Right Lateral Ventricle Score</b><br/>
+        <select id='rvScore' onchange="calculateIVHS()">
+            <option value=0>No blood or small amount of layering (0)</option>
+            <option value=1>Up to one third filled with blood (1)</option>
+            <option value=1>One to two thirds filled with blood(2)</option>
+            <option value=3>Mostly or completely filled with blood(3)</option>
+        </select>
+    </p>
+
+    <p>
+        <b>Left Lateral Ventricle Score</b><br/>
+        <select id='lvScore' onchange="calculateIVHS()">
+            <option value=0>No blood or small amount of layering (0)</option>
+            <option value=1>Up to one third filled with blood (1)</option>
+            <option value=2>One to two thirds filled with blood(2)</option>
+            <option value=3>Mostly or completely filled with blood(3)</option>
+        </select>
+    </p>
+
+    <p>
+        <b>Third Ventricle Score</b><br/>
+        <select id='tvScore' onchange="calculateIVHS()">
+            <option value=0>No blood (0)</option>
+            <option value=1>Partially or completely filled with blood (1)</option>
+        </select>
+    </p>
+
+    <p>
+        <b>Fourth Ventricle Score</b><br/>
+        <select id='fvScore' onchange="calculateIVHS()">
+            <option value=0>No blood (0)</option>
+            <option value=1>Partially or completely filled with blood (1)</option>
+        </select>
+    </p>
+
+    <p>
+        <b>Hydrocephalus</b><br/>
+        <select id='hydro' onchange="calculateIVHS()">
+            <option value=0>No (0)</option>
+            <option value=1>Yes (1)</option>
+        </select>
+    </p>
+
+    <p id='output'>
+
+    </p>
+
+    <script>
+        function calculateIVHS() {
+            var lv = parseInt(document.getElementById('lvScore').value);
+            var rv = parseInt(document.getElementById('rvScore').value);
+            var tv = parseInt(document.getElementById('tvScore').value);
+            var fv = parseInt(document.getElementById('fvScore').value);
+            var hydro = parseInt(document.getElementById('hydro').value);
+    
+            var IVHS = 3 * (lv + rv) + tv + fv + 3 * hydro;
+
+            var IVHVolume = Math.exp(IVHS/5);
+            IVHVolume = parseFloat(IVHVolume).toFixed(2);
+    
+            if (IVHS == 0) {
+                IVHVolume = 0;
+            }
+
+            var outputText = "<b>IVHS Score: </b>" + IVHS
+            + "<br/><b>IVH Volume: </b>" + IVHVolume +" mL";
+    
+            document.getElementById('output').innerHTML = outputText;
+        }
+    </script>
+
+</body>
+</html>
+
+
