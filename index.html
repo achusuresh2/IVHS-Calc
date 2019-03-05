@@ -10,7 +10,7 @@
     </style>
         
     <div class="content">
-        <h1>IVHS Score Calculator</h1>
+        <h1>IVH Score Calculator</h1>
 
         <p>
             <b>Right Lateral Ventricle Score</b><br/>
@@ -59,6 +59,13 @@
         <p id='output'>
     
         </p>
+
+        <hr/>
+
+        <h2>IVH Volume to IVHS Converter</h2>
+        <b>Enter IVH Volume (mL): <br/></b>
+        <input id="txtIVHVol" oninput="reverseIVHS()" value="0"/>
+        <p id='IVHSRev'><b>IVH Score: 0</b></p>
     </div>
         
     <script>
@@ -78,10 +85,26 @@
                 IVHVolume = 0;
             }
 
-            var outputText = "<b>IVHS Score: </b>" + IVHS
+            var outputText = "<b>IVH Score: </b>" + IVHS
             + "<br/><b>IVH Volume: </b>" + IVHVolume +" mL";
     
             document.getElementById('output').innerHTML = outputText;
+        }
+
+        function reverseIVHS() {
+                var IVHVol = parseInt(document.getElementById("txtIVHVol").value);
+                var IVHS = Math.round(Math.log(IVHVol) * 5);
+
+
+                if (IVHS > 23) {
+                    document.getElementById("IVHSRev").innerHTML = "<b>Value too high, IVH Score would be higher than 23</b>"
+                } else {
+                    if (isNaN(IVHS) || !isFinite(IVHS)){
+                        IVHS = 0;
+                    } 
+                    document.getElementById("IVHSRev").innerHTML = "<b>IVH Score: </b>" + IVHS
+                }
+                
         }
     </script>
 
